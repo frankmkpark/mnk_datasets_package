@@ -1,86 +1,55 @@
-# kbo_npb_project
+# NK_datasets
 
-This repository supports a CS8674 summer research course focused on building a predictive framework for evaluating player transitions from the **Korea Baseball Organization (KBO)** and **Nippon Professional Baseball (NPB)** leagues into **Major League Baseball (MLB)**.
+NK_datasets ships standardized datasets for **NPB** (Nippon Professional Baseball) and **KBO** (Korea Baseball Organization), packaged with pandas loaders.  
+It also includes MLB players who have played in either NPB, KBO, or both.
 
-## Project Overview
+- NPB data was scraped from the official [NPB website](https://npb.jp/eng/) and [npbstats.com](http://npbstats.com/eng/).
+- KBO data was scraped from the official [KBO website](https://www.koreabaseball.com/).
+- MLB alignment is partial; meaning only players who appeared in KBO/NPB are included. It was sourced from [Lahman Database](https://sabr.org/lahman-database/).
 
-The goal of this project is to build a structured dataset and apply machine learning models to understand which KBO or NPB players are most likely to succeed when transitioning to MLB. This involves:
+## Requirements
 
-- Curating comprehensive datasets from KBO and NPB
-- Building a player database (biographical, statistical, and transition data)
-- Applying ML algorithms (e.g., neural networks, Bayesian models) to assess predictive power
-- Validating predictions on past player transitions
+- Python 3.9+
+- pandas 1.5+
 
-This work is conducted by **Myungkeun Park** under the supervision of **Prof. Eric Gerber**.
+## Install
 
----
-
-## Current Repository Structure (to be updated)
-
-```
-kbo_npb_project/
-├── KBO/                 # Raw datasets and web scraper files for KBO
-│   ├── data/
-│   └── scrapper/
-├── KBO+NPB/             # Combined KBO and NPB datasets
-│   ├── raw/
-│   ├── kbo_batting.csv
-│   ├── kbo_fielding.csv
-│   ├── kbo_people.csv
-│   ├── kbo_pitching.csv
-│   ├── npb_batting.csv
-│   ├── npb_fielding.csv
-│   ├── npb_people.csv
-│   ├── npb_pitching.csv
-│   ├── ERD_initial.drawio
-│   └── ERD_initial.pdf
-├── KBO+NPB+MLB/             # Combined KBO, NPB, and MLB datasets
-│   ├── raw/
-│   ├── kbo_batting.csv
-│   ├── kbo_fielding.csv
-│   ├── kbo_people.csv
-│   ├── kbo_pitching.csv
-│   ├── npb_batting.csv
-│   ├── npb_fielding.csv
-│   ├── npb_people.csv
-│   ├── npb_pitching.csv
-│   ├── mlb_batting.csv
-│   ├── mlb_pitching.csv
-│   ├── mlb_fielding.csv
-│   ├── mlb_people.csv
-│   ├── ERD_cleaned.drawio
-│   └── ERD_cleaned.pdf
-├── MLB/                         # Raw datasets from Lahman Baseball Database: https://sabr.org/lahman-database/
-│   ├── data/
-│   └── scrapper/
-├── MNK_merged/                  # Merged datasets of KBO, NPB and MLB: a master people, batting, pitching and batting
-│   ├── raw/
-│   ├── ERD_final.drawio
-│   ├── ERD_final.pdf
-│   ├── merged_player_records.csv
-│   ├── mnk_batting.csv
-│   ├── mnk_fielding.csv
-│   ├── mnk_people.csv
-│   └── mnk_pitching.csv
-├── NPB/                         # Raw datasets and web scraper files for NPB
-│   ├── data/
-│   └── scrapper/
-├── vignettes/                   # Data exploration using datasets above
-└── README.md                    # This file
+```bash
+pip install mnk_datasets
 ```
 
----
+## Import
 
-## Contact
+```bash
+import nk
+```
 
-For questions please reach out via GitHub or contact:
-**Myungkeun Park** | Northeastern University | frankmkpark (GitHub)
+All Datasets are grouped into the following collections:
 
-Report structure
+- **kbo_npb** – KBO/NPB league tables:
+  `load_kbo_batting()`, `load_kbo_pitching()`, `load_kbo_fielding()`, ` load_kbo_people()``load_npb_batting() `, `load_npb_pitching()`, `load_npb_fielding()`, `load_npb_people()`
 
-- Intro: Motivation, the overall plan and actual steps
-- Building database: what & how, each directory explanation, mention ERD
-- data prep & ML: cleaning steps, MNLR used --> vignette
-- future works: what's not covered, what could be improved
+- **kbo_npb_mlb** – KBO/NPB/MLB league tables with aligned columns for direct comparison across all 3 leagues:
+  `load_kbo_batting_aligned()`, `load_kbo_pitching_aligned()`, `load_kbo_fielding_aligned()`, `load_kbo_people_aligned()`, `load_npb_batting_aligned()`, `load_npb_pitching_aligned()`, `load_npb_fielding_aligned()`, `load_npb_people_aligned()`, `load_mlb_batting_aligned()`, `load_mlb_pitching_aligned()`, `load_mlb_fielding_aligned()`, `load_mlb_people_aligned()`
 
--- email submission; report + 2 links (package + github with vignettes finished)
+- **nk_merged** – "wide" merged tables (combined schema across KBO and NPB):
+  `load_nk_batting()`, `load_nk_pitching()`, `load_nk_fielding()`, `load_nk_people()`, `load_nk_league()`, `load_nk_team()`, `load_nk_merged_people()`
+
+- **nk_merged_tall** – "tall" player stats, split by league/data slice:
+  `load_nk_playerstats_KBO()`, `load_nk_playerstats_PL()`, `load_nk_playerstats_CL()`, `load_nk_playerstats_JBL()`, `load_nk_league()`, `load_nk_team()`, `load_nk_stats()`
+
+## Short Snippet
+
+```bash
+import nk_datasets as nk
+
+# load nk_merged batting table
+df = nk.load_nk_batting()
+
+# show first rows
+print(df.head())
+```
+
+## License
+
+MIT License © Myungkeun Park

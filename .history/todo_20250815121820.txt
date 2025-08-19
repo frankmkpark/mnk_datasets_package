@@ -1,5 +1,0 @@
-- vignette for next_year_performance
-    - dependency: MNLR
-- package setup
-- report
-- KBO original_source files scrapper to repplace csv
