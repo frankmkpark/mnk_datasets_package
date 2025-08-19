@@ -1,0 +1,7 @@
+- vignette for next_year_performance
+    - dependency: MNLR
+- package setup  -- to be checked 
+
+- report to be drafted; update readme
+
+- review ERD to align with current structures

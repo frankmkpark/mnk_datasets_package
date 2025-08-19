@@ -1,0 +1,5 @@
+- vignette for next_year_performance
+    - dependency: MNLR
+- package setup 
+- report to be drafted; update readme
+- KBO original_source files scrapper to replace csv files

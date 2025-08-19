@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mnk-datasets"
+version = "0.1.0"
+description = "MNK baseball datasets (KBO, NPB, MLB) packaged with a simple pandas loader"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{ name = "Your Name" }]
+requires-python = ">=3.9"
+dependencies = ["pandas>=1.5"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+# include all CSVs under any subpackage's data/ folder
+"mnk_datasets.*" = ["data/*.csv"]
