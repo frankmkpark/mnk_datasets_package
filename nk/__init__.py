@@ -18,8 +18,8 @@ __version__ = "0.1.0"
 _COLLECTION_PACKAGES = {
     "kbo_npb": "kbo_npb",
     "kbo_npb_mlb": "kbo_npb_mlb",
-    "mnk_merged": "mnk_merged",
-    "mnk_merged_tall": "mnk_merged_tall",
+    "nk_merged": "nk_merged",
+    "nk_merged_tall": "nk_merged_tall",
 }
 
 def show_collections() -> list[str]:

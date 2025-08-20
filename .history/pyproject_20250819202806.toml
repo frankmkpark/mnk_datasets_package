@@ -17,4 +17,4 @@ where = ["."]
 include = ["nk*"]
 
 [tool.setuptools.package-data]
-nk = ["**/data/*.csv"]
+"nk" = ["**/data/*.csv"]
