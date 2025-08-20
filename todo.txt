@@ -1,7 +1,0 @@
-- vignette for next_year_performance   -- prep done, fit mnlr
-
-- package setup  -- to be checked 
-
-- report to be drafted (readme) 
-
-- review ERD to align with current structures
