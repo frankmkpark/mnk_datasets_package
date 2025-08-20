@@ -5,18 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mnk_datasets"
 version = "0.1.0"
-description = "NK baseball datasets (NPB, KBO) packaged with pandas loaders + Some MLB data that aligned with NPB and KBO columns and MLB players played either in KBO or NPB"
+description = "NPB and KBO baseball datasets with pandas loaders, plus aligned MLB data for players who played in KBO or NPB"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [{ name = "Myungkeun Park" }]
 requires-python = ">=3.9"
 dependencies = ["pandas>=1.5"]
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
 [tool.setuptools.packages.find]
 where = ["nk"]
 
 [tool.setuptools.package-data]
-"*" = ["data/*.csv"]
+"*": ["data/*.csv"]
